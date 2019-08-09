@@ -11,8 +11,8 @@ import spock.lang.IgnoreRest
 
 class UniqueMajorCategorySpec extends Specification implements GrailsUnitTest {
 
-    /* This test case will test UniqueMajorCategory.java program */
-    def "get all unique major category present in data sheet"(){
+    /* This test method will test UniqueMajorCategory.java program */
+    def "Java-get all unique major category present in data sheet"(){
         setup:
             def uniqueMajorCategory = new UniqueMajorCategory()
         when:"read and pass the excel file.get the response as Map datatype and read it"
@@ -25,8 +25,8 @@ class UniqueMajorCategorySpec extends Specification implements GrailsUnitTest {
     }
 
     @IgnoreRest
-    /* This test case will test UniqMajorCategory.groovy program */
-    def "get all unique major category present in data sheet"(){
+    /* This test method will test UniqMajorCategory.groovy program */
+    def "Groovy-get all unique major category present in data sheet"(){
         setup:
             def uniqueMajorCategory = new UniqMajorCategory()
         when:"read and pass the excel file.get the response as Map datatype and read it"

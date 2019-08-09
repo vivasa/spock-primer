@@ -12,8 +12,8 @@ import spock.lang.IgnoreRest
 class CollegeMajorSpec extends Specification implements GrailsUnitTest {
 
     @IgnoreRest
-    /* This test case will test CollegeMajor.java program */
-    def "verify getMajorNames method"() {
+    /* This test method will test CollegeMajor.java program */
+    def "Java-verify getMajorNames method"() {
         setup:"create object for class"
             def collegeMajor = new CollegeMajor()
         when: "read and pass the excel file.get the response as Map datatype and read it"
@@ -23,11 +23,10 @@ class CollegeMajorSpec extends Specification implements GrailsUnitTest {
         then:"verify the expected size and data"
             names.size() == 5
             assert names == ["GENERAL AGRICULTURE", "AGRICULTURE PRODUCTION AND MANAGEMENT", "ENVIRONMENTAL SCIENCE", "COMPUTER ENGINEERING", "MECHANICAL ENGINEERING"]
-            println result
     }
 
-    /* This test case will test CollegeMajorNames.groovy program */
-    def "verify getMajorNames method"() {
+    /* This test method will test CollegeMajorNames.groovy program */
+    def "Groovy-verify getMajorNames method"() {
         setup:"create object for class"
             def collegeMajor = new CollegeMajorNames()
         when: "read and pass the excel file.get the response as Map datatype and read it"
@@ -37,7 +36,6 @@ class CollegeMajorSpec extends Specification implements GrailsUnitTest {
         then:"verify the expected size and data"
             names.size() == 5
             assert names == ["GENERAL AGRICULTURE", "AGRICULTURE PRODUCTION AND MANAGEMENT", "ENVIRONMENTAL SCIENCE", "COMPUTER ENGINEERING", "MECHANICAL ENGINEERING"]
-            println result
     }
 
 }
