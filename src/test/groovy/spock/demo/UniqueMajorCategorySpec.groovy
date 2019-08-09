@@ -21,20 +21,7 @@ class UniqueMajorCategorySpec extends Specification implements GrailsUnitTest {
             List<String> names = result.get('majorCategory')
         then:"verify the expected size & data"
             names.size() == 3
-            assert names == ["Agriculture & Natural Resources", "Biology & Life Science", "Engineering"]
+            names == ["Agriculture & Natural Resources", "Biology & Life Science", "Engineering"]
     }
 
-    @IgnoreRest
-    /* This test method will test UniqMajorCategory.groovy program */
-    def "Groovy-get all unique major category present in data sheet"(){
-        setup:
-            def uniqueMajorCategory = new UniqMajorCategory()
-        when:"read and pass the excel file.get the response as Map datatype and read it"
-            File excelFile = new File(this.class.classLoader.getResource("CollegeMajor.xlsx")?.getFile())
-            Map<String, List<String>> result = uniqueMajorCategory.getUniqueMajorCategories(excelFile)
-            List<String> names = result.get('majorCategory')
-        then:"verify the expected size & data"
-            names.size() == 3
-            assert names == ["Agriculture & Natural Resources", "Biology & Life Science", "Engineering"]
-    }
 }

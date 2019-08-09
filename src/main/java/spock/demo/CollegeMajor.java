@@ -1,17 +1,15 @@
 package spock.demo;
 
-import java.util.Map;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ArrayList;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
-import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
+import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.apache.poi.xssf.usermodel.XSSFRow;
 
 /**
  * Write a program to list all the Major(s) present in the data sheet.
@@ -20,8 +18,8 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 
 public class CollegeMajor {
 
-    public static Map getMajorNames(File file){
-        Map<String, List<String>> result = new HashMap<String, List<String>>();
+    public static List<String> getMajorNames(File file){
+
         List<String> majorNames = new ArrayList<String>();
         try {
             InputStream excelFileToRead = new FileInputStream(file);
@@ -43,8 +41,7 @@ public class CollegeMajor {
             ie.printStackTrace(System.out);
         }
 
-        result.put("majorName",majorNames);
-        return result;
+        return majorNames;
     }
 
 }

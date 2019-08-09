@@ -19,8 +19,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class CollegeMajorNames {
 
-    public static Map getMajorNames(File file){
-        Map<String, List<String>> result = new HashMap<String, List<String>>();
+    public static List<String> getMajorNames(File file){
+
         def majorNames = []
         try {
             InputStream excelFileToRead = new FileInputStream(file);
@@ -36,8 +36,8 @@ public class CollegeMajorNames {
             }catch(Exception ie) {
                 ie.printStackTrace(System.out);
             }
-            result.put("majorName",majorNames);
-            return result;
+
+            return majorNames;
     }
 
 }

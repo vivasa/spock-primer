@@ -27,7 +27,7 @@ class OrangeHrmSpec extends GebSpec {
     private WebDriverWait wait;
 
     def setupSpec(){
-        System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "/projects/chromedriver");
     }
 
     def setup() {
@@ -44,28 +44,27 @@ class OrangeHrmSpec extends GebSpec {
     }
 
     def "loginToAppIsSuccess"() {
-        when:"Login page"
+        when:"User navigates to Login page"
             driver.get("https://opensource-demo.orangehrmlive.com/index.php/auth/login");
-        then:"verify that, login page is loaded"
-            assert driver.getTitle() == "OrangeHRM";
-            assert driver.getCurrentUrl() == "https://opensource-demo.orangehrmlive.com/index.php/auth/login";
+        then:"User expects that login page is loaded"
+            driver.getTitle() == "OrangeHRM";
+            driver.getCurrentUrl() == "https://opensource-demo.orangehrmlive.com/index.php/auth/login";
 
-        when:"check element exist and get the text"
+        when:"Find an element by its Id"
             String loginPanelHeader=driver.findElement(By.id("logInPanelHeading")).getText();
-        then:"verify with expected text"
-            assert loginPanelHeader == "LOGIN Panel"
+        then:"Text of the element should match known value"
+            loginPanelHeader == "LOGIN Panel"
 
-        when:"enter username & password and press login button"
+        when:"Login credentials are entered and the form is submitted"
             driver.findElement(By.id("txtUsername")).sendKeys("Admin");
             driver.findElement(By.name("txtPassword")).sendKeys("admin123");
             driver.findElement(By.cssSelector(".button")).click();
-        then:"verify it landed in dashboard page"
-            assert driver.getCurrentUrl() == "https://opensource-demo.orangehrmlive.com/index.php/dashboard";
+        then:"Url of the new page points to the User Dashboard"
+            driver.getCurrentUrl() == "https://opensource-demo.orangehrmlive.com/index.php/dashboard";
 
-        when:"check the element exist"
+        and:"Quick launch shortcuts are found"
             String quickLaunchTitle= wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='panel_resizable_0_0']/legend"))).getText();
-        then:
-            assert quickLaunchTitle == "Quick Launch";
+            quickLaunchTitle == "Quick Launch";
     }
 
 }
