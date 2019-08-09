@@ -15,6 +15,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+/**
+ * ./gradlew integrationTest -DintegrationTest.single='*demo/OrangeHrm'
+ */
+
 @Integration
 @Rollback
 class OrangeHrmSpec extends GebSpec {

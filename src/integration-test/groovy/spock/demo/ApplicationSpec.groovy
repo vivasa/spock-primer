@@ -10,6 +10,7 @@ import javax.ws.rs.client.WebTarget;
 
 /**
  * This test case will get one chuck-norris-jokes per execution
+ * ./gradlew integrationTest -DintegrationTest.single='*demo/Application'
  */
 
 @Integration
@@ -33,7 +34,7 @@ class ApplicationSpec extends Specification {
         then:"receive chuck norris joke"
             assert response != null
             assert response != ""
-            println "response:- "+response
+            println "Joke:- "+response
     }
 
 }
