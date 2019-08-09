@@ -11,28 +11,32 @@ import spock.lang.IgnoreRest
 
 class CollegeMajorSpec extends Specification implements GrailsUnitTest {
 
-    def "verify getMajorNames method in collegeMajor.java program"() {
+    @IgnoreRest
+    /* This test case will test CollegeMajor.java program */
+    def "verify getMajorNames method"() {
         setup:"create object for class"
             def collegeMajor = new CollegeMajor()
         when: "read and pass the excel file.get the response as Map datatype and read it"
             File excelFile = new File(this.class.classLoader.getResource("CollegeMajor.xlsx")?.getFile())
             Map<String, List<String>> result = collegeMajor.getMajorNames(excelFile)
             List<String> names = result.get('majorName')
-        then:"verify the expected size"
+        then:"verify the expected size and data"
             names.size() == 5
+            assert names == ["GENERAL AGRICULTURE", "AGRICULTURE PRODUCTION AND MANAGEMENT", "ENVIRONMENTAL SCIENCE", "COMPUTER ENGINEERING", "MECHANICAL ENGINEERING"]
             println result
     }
 
-    @IgnoreRest
-    def "verify getMajorNames method in collegeMajorNames.groovy program"() {
+    /* This test case will test CollegeMajorNames.groovy program */
+    def "verify getMajorNames method"() {
         setup:"create object for class"
             def collegeMajor = new CollegeMajorNames()
         when: "read and pass the excel file.get the response as Map datatype and read it"
             File excelFile = new File(this.class.classLoader.getResource("CollegeMajor.xlsx")?.getFile())
             Map<String, List<String>> result = collegeMajor.getMajorNames(excelFile)
             List<String> names = result.get('majorName')
-        then:"verify the expected size"
+        then:"verify the expected size and data"
             names.size() == 5
+            assert names == ["GENERAL AGRICULTURE", "AGRICULTURE PRODUCTION AND MANAGEMENT", "ENVIRONMENTAL SCIENCE", "COMPUTER ENGINEERING", "MECHANICAL ENGINEERING"]
             println result
     }
 

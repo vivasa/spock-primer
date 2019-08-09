@@ -11,7 +11,7 @@ import spock.lang.IgnoreRest
 
 class UniqueMajorCategorySpec extends Specification implements GrailsUnitTest {
 
-    @IgnoreRest
+    /* This test case will test UniqueMajorCategory.java program */
     def "get all unique major category present in data sheet"(){
         setup:
             def uniqueMajorCategory = new UniqueMajorCategory()
@@ -19,13 +19,13 @@ class UniqueMajorCategorySpec extends Specification implements GrailsUnitTest {
             File excelFile = new File(this.class.classLoader.getResource("CollegeMajor.xlsx")?.getFile())
             Map<String, List<String>> result = uniqueMajorCategory.getUniqueMajorCategories(excelFile)
             List<String> names = result.get('majorCategory')
-        then:"verify the expected size"
+        then:"verify the expected size & data"
             names.size() == 3
-            assert name == ["Agriculture & Natural Resources", "Biology & Life Science", "Engineering"]
-            println "--- "+result
+            assert names == ["Agriculture & Natural Resources", "Biology & Life Science", "Engineering"]
     }
 
-
+    @IgnoreRest
+    /* This test case will test UniqMajorCategory.groovy program */
     def "get all unique major category present in data sheet"(){
         setup:
             def uniqueMajorCategory = new UniqMajorCategory()
@@ -33,8 +33,8 @@ class UniqueMajorCategorySpec extends Specification implements GrailsUnitTest {
             File excelFile = new File(this.class.classLoader.getResource("CollegeMajor.xlsx")?.getFile())
             Map<String, List<String>> result = uniqueMajorCategory.getUniqueMajorCategories(excelFile)
             List<String> names = result.get('majorCategory')
-        then:"verify the expected size"
+        then:"verify the expected size & data"
             names.size() == 3
-            println "-- "+result
+            assert names == ["Agriculture & Natural Resources", "Biology & Life Science", "Engineering"]
     }
 }
